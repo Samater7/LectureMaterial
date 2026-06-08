@@ -6,6 +6,9 @@
 *.md
 !README.md
 
+# Pdf für Pull Requests ausgeschlossen
+*.pdf
+
 # Per-chapter draft wrappers from tools/draft.sh
 lecturenotes/*/draft.tex
 lecturenotes/*/draft.pdf
