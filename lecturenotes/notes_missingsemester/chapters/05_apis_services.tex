@@ -824,11 +824,12 @@ output inline so the script does not stop.}
 if [ -f deploy/pixelwise.service ] && \
    command -v systemctl >/dev/null 2>&1 && \
    id produser >/dev/null 2>&1; then
-    sudo cp deploy/pixelwise.service /etc/systemd/system/pixelwise.service
+    sudo cp deploy/pixelwise.service \
+        /etc/systemd/system/pixelwise.service
     sudo systemctl daemon-reload
     sudo systemctl enable pixelwise
     sudo systemctl restart pixelwise
-    sudo systemctl status pixelwise 
+    sudo systemctl status pixelwise --no-pager
 fi
 \end{verbatim}
 
@@ -855,7 +856,7 @@ tested.
 
 \begin{verbatim}
 sudo systemctl stop pixelwise
-sudo systemctl status pixelwise
+sudo systemctl status pixelwise --no-pager
 sudo systemctl start pixelwise
 journalctl -u pixelwise --since "5 min ago"
 \end{verbatim}

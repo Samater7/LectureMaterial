@@ -3,8 +3,12 @@
 
 # Markdown notes (Claude memory, design docs, drafts)
 # README.md is the GitHub Pages source and stays tracked.
+# Contributor-facing markdown is tracked so it shows up on GitHub.
 *.md
 !README.md
+!CONTRIBUTING.md
+!AGENTS.md
+!.github/**/*.md
 
 # Pdf für Pull Requests ausgeschlossen
 *.pdf
@@ -12,6 +16,10 @@
 # Per-chapter draft wrappers from tools/draft.sh
 lecturenotes/*/draft.tex
 lecturenotes/*/draft.pdf
+
+# Per-chapter build wrappers from tools/build_chapter_pdfs.sh (transient, header says "do not commit")
+lecturenotes/*/_ch_*.tex
+lecturenotes/*/_ch_*.pdf
 
 # LaTeX build artifacts
 *.aux
@@ -31,6 +39,7 @@ lecturenotes/*/draft.pdf
 *.run.xml
 *.snm
 *.synctex.gz
+*.synctex(busy)
 *.toc
 *.vrb
 *.xdv
@@ -46,3 +55,22 @@ desktop.ini
 *.swp
 *.swo
 *~
+
+# Solutions, exam keys, grading data, student submissions
+# (pre-emptive: never expose these even if accidentally dropped into a chapter folder)
+solutions/
+*_solutions.tex
+*_solutions.pdf
+*_loesungen.tex
+*_loesungen.pdf
+grades*.csv
+gradebook*
+students*.csv
+
+# Per-book exam workspaces. Active exams stay local and MUST stay ignored.
+# Publishable exams (Altklausuren, Probeklausuren) live in `open_exams/`
+# instead and are tracked. The negation below makes that intent explicit
+# and survives any future broader ignore rule under lecturenotes/.
+lecturenotes/*/exams/
+!lecturenotes/*/open_exams/
+!lecturenotes/*/open_exams/**
